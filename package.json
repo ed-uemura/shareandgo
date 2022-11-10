@@ -1,6 +1,7 @@
 {
   "name": "sharego",
   "version": "1.0.0",
+  "homepage": "https://ed-uemura.github.io/shareandgo",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -18,7 +19,6 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
-    "gh-pages": "^4.0.0",
     "nodemon": "^2.0.20"
   }
 }
