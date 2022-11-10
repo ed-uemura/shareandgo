@@ -98,7 +98,7 @@ router.delete("/delete", async (request,response) => {
 
     try{
         const savedSpot = await User.deleteOne(
-            { _id: req.body._id }
+            { _id: request.body._id }
           );
         response.status(200).json('User deleted');
     }
@@ -113,7 +113,7 @@ router.put("/update", async (request,response) => {
 
     try{
         const spots = await User.findOneAndUpdate(
-            { _id: req.body._id, },
+            { _id: request.body._id, },
             {
               $set: {
 					firstname: request.body.firstname,

@@ -11,10 +11,10 @@ const app = express();
 app.use(express.json());
 
 // CORS
-// app.use(cors({
-//     origin: process.env.CORS_REQUESTS_ORIGIN
-// }));
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_REQUESTS_ORIGIN
+}));
+// app.use(cors());
 
 // Connecting to MongoDB
 mongoose.connect(

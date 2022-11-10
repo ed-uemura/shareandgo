@@ -17,5 +17,24 @@
         "fblink": "",
         "accounttype": "driver",
         "accountstatus": "CREATED"
+    },
+    {
+        "firstname": "JOHN",
+        "lastname": "DOE",
+        "gender": "MALE",
+        "birthdate": "11-12-2001",
+        "email": "john.doe@test.ca",
+        "phone": "234-567-8923",
+        "bio": "That's my bio",
+        "photo": "",
+        "password": "password",
+        "document": "TX123457",
+        "validemail": true,
+        "validphone": false,
+        "validdoc": false,
+        "doctype": "passport",
+        "fblink": "",
+        "accounttype": "rider",
+        "accountstatus": "CREATED"
     }
 ]
