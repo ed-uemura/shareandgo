@@ -1,0 +1,21 @@
+[
+    {
+        "firstname": "JANE",
+        "lastname": "DOE",
+        "gender": "FEMALE",
+        "birthdate": "12-25-2000",
+        "email": "jane.doe@test.ca",
+        "phone": "234-567-8901",
+        "bio": "Just a bio",
+        "photo": "",
+        "password": "password",
+        "document": "TX123456",
+        "validemail": true,
+        "validphone": false,
+        "validdoc": false,
+        "doctype": "passport",
+        "fblink": "",
+        "accounttype": "driver",
+        "accountstatus": "CREATED"
+    }
+]
