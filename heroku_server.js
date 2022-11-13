@@ -11,6 +11,13 @@ if(env==='development'){
 // Routes files
 const userRoute = require("./src/routes/userRoute")
 const carRoute = require("./src/routes/carRoute")
+const addressRoute = require("./src/routes/addressRoute")
+const paymentRoute = require("./src/routes/paymentRoute")
+const rideRoute = require("./src/routes/rideRoute")
+const passengerRoute = require("./src/routes/passengerRoute")
+const seatRoute = require("./src/routes/seatRoute")
+const chatRoute = require("./src/routes/chatRoute")
+const uploadRoute = require("./src/routes/uploadRoute")
 
 const app = express();
 app.use(bodyParser.json());
@@ -48,17 +55,18 @@ mongoose.connect(
 );
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/'||'/api', (req, res) => {
 	res.send('Everything working fine!');
 });
 app.use("/api/user/", userRoute);
 app.use("/api/car/", carRoute);
-// app.use("/api/payment_method/", userRoute);
-// app.use("/api/address/", userRoute);
-// app.use("/api/ride/", userRoute);
-// app.use("/api/passenger/", userRoute);
-// app.use("/api/seat_request/", userRoute);
-// app.use("/api/upload/", userRoute);
+app.use("/api/payment/", paymentRoute);
+app.use("/api/address/", addressRoute);
+app.use("/api/ride/", rideRoute);
+app.use("/api/passenger/", passengerRoute);
+app.use("/api/seat/", seatRoute);
+app.use("/api/chat/", chatRoute);
+app.use("/api/upload/", uploadRoute);
 app.use("*", (req, res) => {
 	res.status(404).json({
 	  success: "false",

@@ -14,7 +14,7 @@ const PassengerSchema = new mongoose.Schema({
         type: String,
     },
 	amount: {
-        type: Double,
+        type: Number,
     },
 	driver_status: {
         type: String,
@@ -41,6 +41,10 @@ const SeatRequestSchema = new mongoose.Schema({
         required: [true, 'request date is mandatory']
     },
 	status: {
+        type: String,
+        default: "Requested",
+    },
+    reply_message: {
         type: String,
     },
 },
@@ -75,14 +79,14 @@ const RideSchema = new mongoose.Schema({
         type: Date,
     },
 	seats: {
-        type: Integer,
+        type: Number,
         required: [true, 'number of seats is mandatory']
     },
 	description: {
         type: String,
     },
 	price: {
-        type: Double,
+        type: Number,
         required: [true, 'price is mandatory']
     },
 	status: {
