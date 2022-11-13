@@ -4,24 +4,23 @@ const ChatSchema = new mongoose.Schema({
 	sender: {
         ref: 'User',
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: [true, 'sender is mandatory']
 	},
 	receiver: {
         ref: 'User',
         type: mongoose.Schema.Types.ObjectId,
-        require: true,
+        required: [true, 'receiver is mandatory']
 	},
 	date: {
         type: Date,
-        require: true,
+        required: [true, 'date is mandatory']
     },
 	message: {
         type: String,
-        require: true,
+        required: [true, 'message is mandatory']
     },
 	status: {
         type: String,
-        require: false,
     },
 },
 { timestamps: true }

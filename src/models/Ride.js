@@ -4,19 +4,17 @@ const PassengerSchema = new mongoose.Schema({
 	user: {
 		ref: 'User',
 		type: mongoose.Schema.Types.ObjectId,
-		require: true,
+		required: [true, 'User is mandatory']
 	},
 	passenger_status: {
         type: String,
-        require: true,
+        required: [true, 'passenger status is mandatory']
     },
 	payment: {
         type: String,
-        require: false,
     },
 	amount: {
         type: Double,
-        require: false,
     },
 	driver_status: {
         type: String,
@@ -24,7 +22,6 @@ const PassengerSchema = new mongoose.Schema({
     },
 	payment_status: {
         type: String,
-        require: false,
     },
 },
 { timestamps: true }
@@ -34,19 +31,17 @@ const SeatRequestSchema = new mongoose.Schema({
 	user: {
 		ref: 'User',
 		type: mongoose.Schema.Types.ObjectId,
-		require: true,
+		required: [true, 'user is mandatory']
 	},
 	message: {
         type: String,
-        require: false,
     },
 	date: {
         type: Date,
-        require: false,
+        required: [true, 'request date is mandatory']
     },
 	status: {
         type: String,
-        require: false,
     },
 },
 { timestamps: true }
@@ -55,57 +50,54 @@ const SeatRequestSchema = new mongoose.Schema({
 const RideSchema = new mongoose.Schema({
 	origin: {
         type: String,
-        require: true,
+        required: [true, 'origin is mandatory']
     },
 	destination: {
         type: String,
-        require: true,
+        required: [true, 'destination is mandatory']
     },
 	waypoint: {
         type: String,
-        require: false,
     },
 	direction: {
         type: String,
-        require: true,
+        required: [true, 'direction is mandatory']
     },
 	frequency: {
         type: String,
-        require: true,
+        required: [true, 'frequency is mandatory']
     },
 	departure_date: {
         type: Date,
-        require: true,
+        required: [true, 'departure date is mandatory']
     },
 	returning_date: {
         type: Date,
-        require: false,
     },
 	seats: {
         type: Integer,
-        require: true,
+        required: [true, 'number of seats is mandatory']
     },
 	description: {
         type: String,
-        require: false,
     },
 	price: {
         type: Double,
-        require: true,
+        required: [true, 'price is mandatory']
     },
 	status: {
         type: String,
-        require: true,
+        required: [true, 'status is mandatory']
     },
 	user: {
 		ref: 'User',
 		type: mongoose.Schema.Types.ObjectId,
-		require: true,
+		required: [true, 'user is mandatory']
 	},
 	car: {
 		ref: 'Car',
 		type: mongoose.Schema.Types.ObjectId,
-		require: true,
+		required: [true, 'car is mandatory']
 	},
 	passenger: [PassengerSchema],
 	seat_request: [SeatRequestSchema],

@@ -5,7 +5,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon heroku_server.js",
+    "start": "nodemon heroku_server.js"
   },
   "author": "Share & Go Team",
   "license": "ISC",

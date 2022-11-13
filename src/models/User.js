@@ -3,29 +3,27 @@ const mongoose = require('mongoose');
 const PaymentMethodSchema = new mongoose.Schema({
 	type: {
         type: String,
-        require: true,
+        required: [true, 'Please add a payment type']
     },
 	pan: {
         type: String,
-        require: true,
+        required: [true, 'Please add the card number']
     },
 	name: {
         type: String,
-        require: true,
 		max: 30,
+        required: [true, 'Please add a payment name']
     },
 	expiration: {
         type: Date,
-        require: true,
+        required: [true, 'Please add the payment expiration date']
     },
 	isdefault: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	address_id: {
         type: String,
-        require: false,
 		max: 30,
     }, 
 },
@@ -35,31 +33,29 @@ const PaymentMethodSchema = new mongoose.Schema({
 const AddressSchema = new mongoose.Schema({
 	name: {
         type: String,
-        require: true,
+        required: [true, 'Please add a name for the address']
     },
 	address: {
         type: String,
-        require: true,
+        required: [true, 'Please add street number and address']
     },
 	address2: {
         type: String,
-        require: false,
     },
 	city: {
         type: String,
-        require: true,
+        required: [true, 'Please add a city name']
     },
 	province: {
         type: String,
-        require: true,
+        required: [true, 'Please add a province name']
     },
 	zip: {
         type: String,
-        require: true,
+        required: [true, 'Please add a zip code']
     },
 	isdefault: {
         type: Boolean,
-        require: false,
         default: false,
     },
 },
@@ -69,72 +65,63 @@ const AddressSchema = new mongoose.Schema({
 const CarSchema = new mongoose.Schema({
 	make: {
         type: String,
-        require: true,
+        required: [true, 'Please add the car manufacturer']
     },
 	model: {
         type: String,
-        require: true,
+        required: [true, 'Please add the car model']
     },
 	type: {
         type: String,
-        require: true,
+        required: [true, 'Please add the car type']
     },
 	color: {
         type: String,
-        require: true,
+        required: [true, 'Please add the car color']
     },
 	year: {
         type: Number,
-        require: true,
 		min: 1900,
         max: 2100,
+        required: [true, 'Please add the car model year']
     },
 	picture: {
         type: String,
-        require: false,
     },
 	plate: {
         type: String,
-        require: true,
+        required: [true, 'Please add the car plate number']
     },
 	feat_ac: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_ls: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_lm: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_ll: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_wf: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_bk: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_sk: {
         type: Boolean,
-        require: false,
         default: false,
     },
 	feat_pa: {
         type: Boolean,
-        require: false,
         default: false,
     },
 },
@@ -144,93 +131,83 @@ const CarSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     firstname: {
         type: String,
-        require: true,
         min: 2,
         max: 25,
+        required: [true, 'Please add a first name']
     },
     lastname: {
         type: String,
-        require: true,
         min: 2,
         max: 25,
+        required: [true, 'Please add a last name']
     },
     gender: {
         type: String,
         max: 6,
-        require: true,
     },
     birthdate: {
         type: Date,
-        require: true,
     },
     email: {
         type: String,
         max: 80,
-        require: true,
         unique: true,
+        required: [true, 'Please add an email']
     },
     phone: {
         type: String,
         max: 20,
-        require: true,
     },
     bio: {
         type: String,
         max: 500,
-        require: false,
     },
     photo: {
         type: String,
         max: 45,
-        require: false,
     },
     password: {
         type: String,
-        require: true,
         min: 8,
         max: 300,
+        required: [true, 'Please add a password']
     },
     document: {
         type: String,
-        require: false,
         min: 2,
         max: 45,
     },
     validemail: {
         type: Boolean,
-        require: false,
         default: false,
     },
     validphone: {
         type: Boolean,
-        require: false,
         default: false,
     },
     validdoc: {
         type: Boolean,
-        require: false,
         default: false,
     },
     doctype: {
         type: String,
-        require: false,
-        min: 2,
+         min: 2,
         max: 20,
     },
     fblink: {
         type: String,
-        require: false,
         min: 8,
         max: 45,
     },
     accounttype: {
         type: String,
-        require: false,
     },
     accountstatus: {
         type: String,
-        require: false,
         default: "ACTIVE",
+    },
+    token: {        
+        type: String,
     },
 	car: [CarSchema],
 	payment_method: [PaymentMethodSchema],
