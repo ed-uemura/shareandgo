@@ -19,7 +19,7 @@
       "url": "http://localhost:5000/"
     },
     {
-      "url": "https://share-and-go-backend.herokuapp.com/"
+      "url": "https://share-and-go-backend.herokuapp.com/api/"
     }
   ],
   "paths": {

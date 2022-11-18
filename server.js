@@ -10,7 +10,7 @@ const app = express();
 
 // SWAGGER CODE
 const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./src/config/swagger.json')
+const swaggerFile = require('./src/config/openapi3_0.json')
 var options = {	explorer: true };
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile, options))
 
