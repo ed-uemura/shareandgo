@@ -52,9 +52,9 @@ app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Credentials', true);
 	return next();
   });
-app.use(cors({
-    origin: ['172.218.36.29', '70.64.0.0/12']
-}));
+app.use(cors(
+//	{origin: ['172.218.36.29', '70.64.0.0/12']}
+	));
 
 // Connecting to MongoDB
 mongoose.connect(
