@@ -91,6 +91,11 @@
         "tags": [
           "user"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -107,6 +112,11 @@
         "description": "Return one user",
         "tags": [
           "user"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -156,6 +166,11 @@
         "tags": [
           "user"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -174,6 +189,11 @@
         "description": "Update a user",
         "tags": [
           "user"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [],
         "requestBody": {
@@ -194,6 +214,11 @@
         "description": "",
         "tags": [
           "car"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -224,6 +249,11 @@
         "tags": [
           "car"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -242,6 +272,11 @@
         "description": "",
         "tags": [
           "car"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -270,6 +305,11 @@
         "tags": [
           "car"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -296,6 +336,11 @@
         "description": "",
         "tags": [
           "car"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -334,6 +379,11 @@
         "tags": [
           "address"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -361,6 +411,11 @@
         "tags": [
           "address"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -387,6 +442,11 @@
         "description": "",
         "tags": [
           "address"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -425,6 +485,11 @@
         "tags": [
           "payment"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -452,6 +517,11 @@
         "tags": [
           "payment"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -478,6 +548,11 @@
         "description": "",
         "tags": [
           "payment"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -516,6 +591,11 @@
         "tags": [
           "ride"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -535,6 +615,11 @@
         "tags": [
           "ride"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -553,6 +638,11 @@
         "description": "",
         "tags": [
           "ride"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -583,6 +673,11 @@
         "tags": [
           "passenger"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -612,6 +707,11 @@
         "tags": [
           "passenger"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -630,6 +730,11 @@
         "description": "",
         "tags": [
           "passenger"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -658,6 +763,11 @@
         "tags": [
           "passenger"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -684,6 +794,11 @@
         "description": "",
         "tags": [
           "passenger"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -722,6 +837,11 @@
         "tags": [
           "seat"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -749,6 +869,11 @@
         "tags": [
           "seat"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "rideid",
@@ -775,6 +900,11 @@
         "description": "",
         "tags": [
           "seat"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -813,6 +943,11 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userid",
@@ -831,6 +966,11 @@
         "description": "",
         "tags": [
           "chat"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -859,6 +999,11 @@
         "tags": [
           "chat"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "chatid",
@@ -877,6 +1022,11 @@
         "description": "Upload an image",
         "tags": [
           "upload"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
@@ -904,6 +1054,11 @@
         "description": "",
         "tags": [
           "upload"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
         ],
         "parameters": [
           {
