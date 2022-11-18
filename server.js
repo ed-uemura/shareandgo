@@ -79,13 +79,14 @@ app.use("/api/passenger/", passengerRoute);
 app.use("/api/seat/", seatRoute);
 app.use("/api/chat/", chatRoute);
 app.use("/api/upload/", uploadRoute);
+
 app.use("*", (req, res) => {
-	res.status(404).json({
+	res.status(405).json({
 	  success: "false",
 	  message: "Page not found",
 	  error: {
-		statusCode: 404,
-		message: "No such Endpoint. Please check the URL and method.",
+		statusCode: 405,
+		message: "Method Not Allowed. Please check the URL and method.",
 	  },
 	});
   });

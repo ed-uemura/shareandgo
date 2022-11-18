@@ -13,9 +13,8 @@ const verifyToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(403).json('Invalid Token');
+    res.status(403).json('Invalid Token');
   }
-  next();
 };
 
 const verifyAdmin = async (req, res, next) => {
