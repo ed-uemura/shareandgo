@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
     req.body.token || req.query.token || req.headers["x-access-token"];
 
   if (!token) {
-    throw new Error("A token is required for authentication");
+    res.status(403).json("A token is required for authentication");
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_TOKEN_KEY);
