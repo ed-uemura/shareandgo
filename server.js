@@ -1,12 +1,37 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv'); // EXC
-const jwt = require('jsonwebtoken');
-// Routes files
-const userRoute = require("./src/routes/userRoute")
+const env = process.env.NODE_ENV || 'development';
+const auth = require("./src/middleware/auth");
+const bodyParser = require('body-parser');
 
 const app = express();
+
+
+// SWAGGER CODE
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./src/config/swagger.json')
+var options = {	explorer: true };
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile, options))
+
+if(env==='development'){
+	const dotenv = require('dotenv');
+	dotenv.config();
+}
+// Routes files
+const userRoute = require("./src/routes/userRoute")
+const carRoute = require("./src/routes/carRoute")
+const addressRoute = require("./src/routes/addressRoute")
+const paymentRoute = require("./src/routes/paymentRoute")
+const rideRoute = require("./src/routes/rideRoute")
+const passengerRoute = require("./src/routes/passengerRoute")
+const seatRoute = require("./src/routes/seatRoute")
+const chatRoute = require("./src/routes/chatRoute")
+const uploadRoute = require("./src/routes/uploadRoute")
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Express JSON Middleware
 app.use(express.json());
@@ -15,10 +40,19 @@ app.use(express.json());
 // app.use(cors({
 //     origin: process.env.CORS_REQUESTS_ORIGIN
 // }));
-app.use(cors());
-
-// .ENV for accessing files
-dotenv.config();
+app.use((req, res, next) => {
+	const allowedOrigins = process.env.CORS_REQUESTS_ORIGIN;
+	const origin = req.headers.origin;
+	if (allowedOrigins.includes(origin)) {
+		 res.setHeader('Access-Control-Allow-Origin', origin);
+	}
+	//res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+	res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+	res.header('Access-Control-Allow-Credentials', true);
+	return next();
+  });
+app.use(cors({ credentials:true }));
 
 // Connecting to MongoDB
 mongoose.connect(
@@ -31,17 +65,28 @@ mongoose.connect(
 );
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/'||'/api', (req, res) => {
 	res.send('Everything working fine!');
 });
 app.use("/api/user/", userRoute);
-// app.use("/api/car/", userRoute);
-// app.use("/api/payment_method/", userRoute);
-// app.use("/api/address/", userRoute);
-// app.use("/api/ride/", userRoute);
-// app.use("/api/passenger/", userRoute);
-// app.use("/api/seat_request/", userRoute);
-// app.use("/api/upload/", userRoute);
+app.use("/api/car/", carRoute);
+app.use("/api/payment/", paymentRoute);
+app.use("/api/address/", addressRoute);
+app.use("/api/ride/", rideRoute);
+app.use("/api/passenger/", passengerRoute);
+app.use("/api/seat/", seatRoute);
+app.use("/api/chat/", chatRoute);
+app.use("/api/upload/", uploadRoute);
+app.use("*", (req, res) => {
+	res.status(404).json({
+	  success: "false",
+	  message: "Page not found",
+	  error: {
+		statusCode: 404,
+		message: "No such Endpoint. Please check the URL and method.",
+	  },
+	});
+  });
 
 // API Listen
 const PORT = process.env.PORT || 5000;

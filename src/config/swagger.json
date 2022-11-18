@@ -1,0 +1,922 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-access-token"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    },
+    {
+      "url": "https://share-and-go-backend.herokuapp.com/"
+    }
+  ],
+  "paths": {
+    "/user/create": {
+      "post": {
+        "description": "",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "user to add to the system",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              },
+              "examples": {
+                "user" : {
+                  "summary": "User Example", 
+                  "value": {
+                    "firstname": "JANE",
+                    "lastname": "DOE",
+                    "gender": "FEMALE",
+                    "birthdate": "12-25-2000",
+                    "email": "jane.doe@test.ca",
+                    "phone": "234-567-8901",
+                    "bio": "Just a bio",
+                    "photo": "",
+                    "password": "********",
+                    "document": "TX123456",
+                    "validemail": true,
+                    "validphone": false,
+                    "validdoc": false,
+                    "doctype": "passport",
+                    "fblink": "",
+                    "accounttype": "driver",
+                    "accountstatus": "CREATED"
+                  }
+                } 
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "user" : {
+                    "summary": "User Example", 
+                    "value": {
+                      "_id": "{createdUser._id}",
+                      "email": "jane.doe@test.ca",
+                      "token": "{token}"
+                    }
+                  } 
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/viewall": {
+      "get": {
+        "description": "Return all users",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/user/viewone/{id}": {
+      "get": {
+        "description": "Return one user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/login": {
+      "post": {
+        "description": "Authenticate user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "user to add to the system",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              },
+              "examples": {
+                "user" : {
+                  "summary": "User Example", 
+                  "value": {
+                    "email": "jane.doe@test.ca",
+                    "password": "********"
+                  }
+                } 
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/user/delete/{id}": {
+      "delete": {
+        "description": "Delete user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/update": {
+      "put": {
+        "description": "Update a user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/car/create/{userid}": {
+      "post": {
+        "description": "",
+        "tags": [
+          "car"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/car/viewall/{userid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "car"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/car/viewone/{userid}/{carid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "car"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "carid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/car/delete/{userid}/{carid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "car"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "carid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/car/update/{userid}/{carid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "car"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "carid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/address/viewone/{userid}/{addressid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/address/delete/{userid}/{addressid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/address/update/{userid}/{addressid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "addressid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/payment/viewone/{userid}/{paymentid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "payment"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paymentid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/payment/delete/{userid}/{paymentid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "payment"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paymentid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/payment/update/{userid}/{paymentid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "payment"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paymentid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/ride/viewone/{rideid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "ride"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/ride/delete/{rideid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "ride"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/ride/update/{rideid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "ride"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/passenger/create/{rideid}": {
+      "post": {
+        "description": "",
+        "tags": [
+          "passenger"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/passenger/viewall/{rideid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "passenger"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/passenger/viewone/{rideid}/{passengerid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "passenger"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passengerid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/passenger/delete/{rideid}/{passengerid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "passenger"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passengerid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/passenger/update/{rideid}/{passengerid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "passenger"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passengerid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/seat/viewone/{rideid}/{seatid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "seat"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "seatid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/seat/delete/{rideid}/{seatid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "seat"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "seatid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/seat/update/{rideid}/{seatid}": {
+      "put": {
+        "description": "",
+        "tags": [
+          "seat"
+        ],
+        "parameters": [
+          {
+            "name": "rideid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "seatid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      }
+    },
+    "/chat/partners/{userid}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "chat"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/chat/viewall/{userid}/{user2id}": {
+      "get": {
+        "description": "",
+        "tags": [
+          "chat"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user2id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/chat/delete/{chatid}": {
+      "delete": {
+        "description": "",
+        "tags": [
+          "chat"
+        ],
+        "parameters": [
+          {
+            "name": "chatid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+        "/upload/image/{userid}": {
+      "post": {
+        "description": "Upload an image",
+        "tags": [
+          "upload"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        },
+        "responses": {}
+      },
+      "get": {
+        "description": "",
+        "tags": [
+          "upload"
+        ],
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}

@@ -5,32 +5,32 @@ const { createUser, viewAllUsers, viewUser, loginUser, deleteUser, updateUser } 
 
 // @desc   Create a new user
 // @route  POST /api/user/create {User}
-// @accees Public
+// @access Public
 router.post("/create", async (request,response) => wrapWithTryCatch(response, () => createUser(request.body)));
 
 // @desc   Return all users
 // @route  GET /api/user/viewall 
-// @accees Admin
+// @access Admin
 router.get("/viewall", verifyToken, verifyAdmin, async (request,response) => wrapWithTryCatch(response, () => viewAllUsers()));
 
 // @desc   Return one user
 // @route  GET /api/user/viewone
-// @accees Protected
+// @access Protected
 router.get("/viewone/:id", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewUser(request.params.id)));
 
 // @desc   Authenticate user
 // @route  POST /api/user/login {email, password}
-// @accees Public
+// @access Public
 router.post("/login", async (request,response) => wrapWithTryCatch(response, () => loginUser(request.body)));
 
 // @desc   Delete user
 // @route  POST /api/user/delete {id}
-// @accees Protected
+// @access Protected
 router.delete("/delete/:id", verifyToken, async (request,response) => wrapWithTryCatch(response, () => deleteUser(request.params.id)));
 
 // @desc   Update a user
 // @route  POST /api/user/update {User}
-// @accees Protected
+// @access Protected
 router.put("/update", verifyToken, async (request,response) => wrapWithTryCatch(response, () => updateUser(request.body)));
 
 module.exports = router; 

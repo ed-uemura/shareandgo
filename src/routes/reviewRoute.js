@@ -23,7 +23,7 @@ router.get("/viewall/:userid", verifyToken, async (request,response) => wrapWith
 // @accees Protected
 router.get("/viewreview/:reviewid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewReview(request.params.reviewid)));
 
-// @desc   Delete review message
+// @desc   Delete review
 // @route  POST /api/review/delete/:Review._id/Review._id {id}
 // @accees Protected
 router.delete("/delete/:reviewid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => deleteReview(request.params.reviewid)));

@@ -18,7 +18,8 @@ const uploadImage = async (request,response) => {
     // set up multer
     const storage = multer.diskStorage({
         destination: (request, file, cb) => {
-            const folderName = `.src/images/${year}/${month}`
+            // temporary served with local files. @ TODO: implement cloud storage
+            const folderName = `.src/images/`
             fs.mkdirSync(folderName, { recursive: true })
             return cb(null, folderName);
         },
@@ -41,9 +42,13 @@ const uploadImage = async (request,response) => {
         throw new Error(error);
     } else {
         return response.status(201)
-        .json({ url: `${process.env.BACKEND_URL}:${process.env.PORT}/images/${year}/${month}/${imageName}`});
+        .json({ url: `${process.env.BACKEND_URL}:${process.env.PORT}/images/${imageName}`});
     }
     });
 };
 
+// Return image file path
+const getImage = (userid) => {
+    return response.status(200).json({ url: `${process.env.BACKEND_URL}:${process.env.PORT}/images/${imageName}`});
+};
 module.exports = { uploadImage };

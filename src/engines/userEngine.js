@@ -51,7 +51,6 @@ const createUser = async (body) => {
             // send object
             return ({
                 _id: createdUser._id,
-                name: createdUser.name,
                 email: createdUser.email,
                 token: token,
             });
@@ -94,7 +93,6 @@ const loginUser = async (body) => {
             // send object
             return ({
                 _id: user._id,
-                name: user.name,
                 email: user.email,
                 token: token,
             });
