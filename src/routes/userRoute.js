@@ -6,7 +6,7 @@ const { createUser, viewAllUsers, viewUser, loginUser, deleteUser, updateUser } 
 // @desc   Create a new user
 // @route  POST /api/user/create {User}
 // @access Public
-router.post("/create", async (request,response) => wrapWithTryCatch(response, () => createUser(request.body)));
+router.post("/create", async (request,response) => wrapWithTryCatch(response, () => createUser(request.body,response)));
 
 // @desc   Return all users
 // @route  GET /api/user/viewall 

@@ -12,13 +12,16 @@ const updateToken = async (id) => {
 }
 
 // Create a new user
-const createUser = async (body) => {
+const createUser = async (body,res) => {
+    console.log(body);
     const { firstname, lastname, email, password } = body;
-    if(!firstname || !lastname || !email || !password){
+    if(  !password){
+        res.message = 'Please fill all fields';
         throw new Error(`Not all required fields were informed.[firstname, lastname, email, password]`);
     }
     const emailExists = await User.findOne({email:email})
     if(emailExists) {
+        res.message = 'Email already exists';
         throw new Error('User already exists.');
     }
     else
@@ -56,17 +59,18 @@ const createUser = async (body) => {
             });
         }
         else{
+            res.message = 'Error creating user';
             throw new Error('Invalid user data.');
         }
     }
 }
 
 // return all users
-const viewAllUsers = async () => { return await User.find().select('-password')}
+const viewAllUsers = async () => { return await User.find().select('-token').select('-password'); }
 
 // return a user given an id
 const viewUser = async (id) => {
-    const user = await User.findById(id).select('-password');
+    const user = await User.findById(id).select('-token').select('-password');
     if(!user){
         throw new Error('User not found!');
     }

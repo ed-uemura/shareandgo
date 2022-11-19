@@ -2,13 +2,17 @@ const User = require("../models/User");
 
 // Create a new payment method
 const createPayment = async (userid, body) => {
-    const { type, pan, name, expiration } = body;
-    if(!type || !pan || !name || !expiration ){
-        throw new Error(`Not all required fields were informed.[type, pan, name, expiration]`);
-    }
+    const { type, pan, name, expiration, transit, institution } = body;
+    if(!type)
+        throw new Error('Please add a payment type');
+    else if(type === 'card' && ( !pan || !name || !expiration ))
+        throw new Error(`Not all required fields were informed.[pan, name, expiration]`);
+    else if(type === 'bank' && ( !pan || !transit || !institution ))
+        throw new Error(`Not all required fields were informed.[institution, transit, pan]`);
+
     const query = await User.findOne({_id:userid},{payment_method:{$elemMatch:{pan:pan}}})
     if(query.payment_method.length) {
-        throw new Error('A payment_method with this card number already exists.');
+        throw new Error('A payment_method with this number already exists.');
     }
     else
     {

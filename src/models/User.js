@@ -14,9 +14,14 @@ const PaymentMethodSchema = new mongoose.Schema({
 		max: 30,
         required: [true, 'Please add a payment name']
     },
+    institution: {
+        type: Number
+    }, 
+    transit: {
+        type: Number
+    }, 
 	expiration: {
-        type: Date,
-        required: [true, 'Please add the payment expiration date']
+        type: Date
     },
 	isdefault: {
         type: Boolean,
