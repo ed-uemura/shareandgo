@@ -99,6 +99,8 @@ const loginUser = async (body) => {
                 _id: user._id,
                 email: user.email,
                 token: token,
+                firstname: user.firstname,
+                accounttype: user.accounttype
             });
         }
     }
