@@ -9,12 +9,12 @@ const { createReview, getRating, viewAllReviews, viewReview, updateReview, delet
 router.post("/create", verifyToken, async (request,response) => wrapWithTryCatch(response, () => createReview(request.body)));
 
 // @desc   Get an average rating of a user
-// @route  GET /api/review/getrating/:Review._id
+// @route  GET /api/review/getrating/:User._id
 // @accees Protected
 router.post("/getrating", verifyToken, async (request,response) => wrapWithTryCatch(response, () => getRating(request.params.userid)));
 
 // @desc   List all reviews of one user
-// @route  GET /api/review/viewall/:Review._id
+// @route  GET /api/review/viewall/:User._id
 // @accees Protected
 router.get("/viewall/:userid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewAllReviews(request.params.userid)));
 
