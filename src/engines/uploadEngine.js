@@ -2,18 +2,10 @@ const multer = require("multer");
 const fs = require("fs");
 
 // Upload an image
-const uploadImage = async (request,response) => {
+const uploadImage = async (id,request,response) => {
     
     // variables for image name and path
     const imageName = "";
-    const dateObj = new Date();
-    const month = dateObj.getUTCMonth() + 1; 
-    const day = dateObj.getUTCDate();
-    const year = dateObj.getUTCFullYear();
-    const seconds = dateObj.getSeconds();
-    const minutes = dateObj.getMinutes();
-    const hour = dateObj.getHours();
-    const id = parseInt(Math.random()*100000)
 
     // set up multer
     const storage = multer.diskStorage({
@@ -25,7 +17,7 @@ const uploadImage = async (request,response) => {
         },
         filename: (request, file, cb) => {
             const ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
-            imageName = `${year}/${month}/${year}_${month}_${day}_${id}_${hour}_${minutes}_${seconds}_${id}.${ext}`;
+            imageName = `${id}.${ext}`;
             return cb(null, imageName);
         }
     });
@@ -47,8 +39,5 @@ const uploadImage = async (request,response) => {
     });
 };
 
-// Return image file path
-const getImage = (userid) => {
-    return response.status(200).json({ url: `${process.env.BACKEND_URL}:${process.env.PORT}/images/${imageName}`});
-};
+
 module.exports = { uploadImage };
