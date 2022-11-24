@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require("../models/User");
+const Review = require("../models/Review");
+
 // Creates a new JWT token and update in User model
 const updateToken = async (id) => {
     // generate token
@@ -148,6 +150,19 @@ const updateUser = async (body) => {
         }
       )
       return ('User updated');
+}
+const getUserEvaluation = async (id) => {
+    const userEvaluation = await Review.aggregate([
+        { '$group': {
+            '_id': id,
+            'avg': { '$avg': '$rating' }
+        }
+    }]);
+
+    if(!userEvaluation){
+        return 0
+    }
+    return userEvaluation[0].avg;
 }
 
 module.exports = {

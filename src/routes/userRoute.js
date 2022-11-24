@@ -33,4 +33,9 @@ router.delete("/delete/:id", verifyToken, async (request,response) => wrapWithTr
 // @access Protected
 router.put("/update", verifyToken, async (request,response) => wrapWithTryCatch(response, () => updateUser(request.body)));
 
+// @desc   Return one user
+// @route  GET /api/user/viewone
+// @access Protected
+router.get("/evaluation/:id", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewUserEvaluation(request.params.id)));
+
 module.exports = router; 
