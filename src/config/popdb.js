@@ -26,26 +26,26 @@ mongoose.connect(
 	);
 
 // Clear the database
-const clearDB = async () => {
-	User.deleteMany({}, (err) => {
-		if (err) console.log(err);
-		else console.log("Users cleared.");
-	});
-	Review.deleteMany({}, (err) => {
-	if (err) console.log(err);
-	else console.log("Reviews cleared.");
-	});
-	// Chat.deleteMany({}, (err) => {
-	// 	if (err) console.log(err);
-	// 	else console.log("Chats cleared.");
-	// });
+// const clearDB = async () => {
+// 	User.deleteMany({}, (err) => {
+// 		if (err) console.log(err);
+// 		else console.log("Users cleared.");
+// 	});
+// 	Review.deleteMany({}, (err) => {
+// 	if (err) console.log(err);
+// 	else console.log("Reviews cleared.");
+// 	});
+// 	// Chat.deleteMany({}, (err) => {
+// 	// 	if (err) console.log(err);
+// 	// 	else console.log("Chats cleared.");
+// 	// });
 
-	Ride.deleteMany({}, (err) => {
-		if (err) console.log(err);
-		else console.log("Rides cleared.");
-	});
-};
-clearDB();
+// 	Ride.deleteMany({}, (err) => {
+// 		if (err) console.log(err);
+// 		else console.log("Rides cleared.");
+// 	});
+// };
+// clearDB();
 
 userMap = {};
 carMap = {};
