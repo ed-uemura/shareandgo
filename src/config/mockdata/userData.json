@@ -6,7 +6,7 @@
       "birthdate": "2000-12-25T08:00:00.000Z",
       "email": "jane.doe@test.ca",
       "phone": "234-567-8901",
-      "password": "password",
+      "password": "$2b$10$wnurGjxUMncyEIq406HcIuHumMGTM4qyqcpdbhxNkj8/bV.TsDVF6",
       "bio": "Just a bio",
       "photo": "",
       "document": "TX123456",

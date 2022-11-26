@@ -1,7 +1,9 @@
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 const Ride = require("../models/Ride");
 //const dotenv = require("dotenv");
 const Review = require("../models/Review");
+
 // const Chat = require("../../models/Chat");
 
 // Use .ENV config files
@@ -25,27 +27,27 @@ mongoose.connect(
 	   }
 	);
 
-// Clear the database
-// const clearDB = async () => {
-// 	User.deleteMany({}, (err) => {
-// 		if (err) console.log(err);
-// 		else console.log("Users cleared.");
-// 	});
-// 	Review.deleteMany({}, (err) => {
-// 	if (err) console.log(err);
-// 	else console.log("Reviews cleared.");
-// 	});
-// 	// Chat.deleteMany({}, (err) => {
-// 	// 	if (err) console.log(err);
-// 	// 	else console.log("Chats cleared.");
-// 	// });
+//Clear the database
+const clearDB = async () => {
+	User.deleteMany({}, (err) => {
+		if (err) console.log(err);
+		else console.log("Users cleared.");
+	});
+	Review.deleteMany({}, (err) => {
+	if (err) console.log(err);
+	else console.log("Reviews cleared.");
+	});
+	// Chat.deleteMany({}, (err) => {
+	// 	if (err) console.log(err);
+	// 	else console.log("Chats cleared.");
+	// });
 
-// 	Ride.deleteMany({}, (err) => {
-// 		if (err) console.log(err);
-// 		else console.log("Rides cleared.");
-// 	});
-// };
-// clearDB();
+	Ride.deleteMany({}, (err) => {
+		if (err) console.log(err);
+		else console.log("Rides cleared.");
+	});
+};
+clearDB();
 
 userMap = {};
 carMap = {};
@@ -53,7 +55,11 @@ carMap = {};
 // Add users
 const addUsers = async () => {
 	await new Promise(r => setTimeout(r, 1000));
-	userData.forEach((user) => {
+	userData.forEach( async (user) => {
+		const{password} = user;
+		const crypt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password,crypt)
+		user = {...user, password: hashedPassword}
 		const newUser = new User(user);
 		newUser.save((err) => {
 			if (err) console.log(err);
