@@ -28,6 +28,7 @@ const passengerRoute = require("./src/routes/passengerRoute")
 const seatRoute = require("./src/routes/seatRoute")
 const chatRoute = require("./src/routes/chatRoute")
 const uploadRoute = require("./src/routes/uploadRoute")
+const reviewRoute = require("./src/routes/reviewRoute")
 
 
 app.use(bodyParser.json());
@@ -79,6 +80,7 @@ app.use("/api/passenger/", passengerRoute);
 app.use("/api/seat/", seatRoute);
 app.use("/api/chat/", chatRoute);
 app.use("/api/upload/", uploadRoute);
+app.use("/api/review/", reviewRoute);
 
 app.use("*", (req, res) => {
 	res.status(405).json({

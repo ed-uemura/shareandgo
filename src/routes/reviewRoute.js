@@ -5,32 +5,32 @@ const { createReview, getRating, viewAllReviews, viewReview, updateReview, delet
 
 // @desc   Create a new review record
 // @route  POST /api/review/create {Review}
-// @accees Protected
+// @access Protected
 router.post("/create", verifyToken, async (request,response) => wrapWithTryCatch(response, () => createReview(request.body)));
 
 // @desc   Get an average rating of a user
 // @route  GET /api/review/getrating/:User._id
-// @accees Protected
-router.post("/getrating", verifyToken, async (request,response) => wrapWithTryCatch(response, () => getRating(request.params.userid)));
+// @access Protected
+router.get("/getrating/:userid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => getRating(request.params.userid)));
 
 // @desc   List all reviews of one user
 // @route  GET /api/review/viewall/:User._id
-// @accees Protected
+// @access Protected
 router.get("/viewall/:userid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewAllReviews(request.params.userid)));
 
 // @desc   Return a review
 // @route  GET /api/review/view/:Review._id
-// @accees Protected
+// @access Protected
 router.get("/viewreview/:reviewid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => viewReview(request.params.reviewid)));
 
 // @desc   Delete review
 // @route  POST /api/review/delete/:Review._id/Review._id {id}
-// @accees Protected
+// @access Protected
 router.delete("/delete/:reviewid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => deleteReview(request.params.reviewid)));
 
 // @desc   Update a review
 // @route  POST /api/review/update/:Ride._id/Review._id {Review}
-// @accees Protected
+// @access Protected
 router.put("/update/:reviewid", verifyToken, async (request,response) => wrapWithTryCatch(response, () => updateReview(request.params.reviewid,request.body)));
 
 module.exports = router; 

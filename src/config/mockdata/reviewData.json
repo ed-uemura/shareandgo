@@ -1,0 +1,38 @@
+[
+    {
+        "author_email": "charles.morris@reqres.in",
+        "reviewed_email": "george.bluth@reqres.in",
+        "date": "2019-01-01",
+        "comments": "Very good",
+        "rating": 5
+    },
+    {
+        "author_email": "janet.weaver@reqres.in",
+        "reviewed_email": "george.bluth@reqres.in",
+        "date": "2019-02-01",
+        "comments": "Nice work",
+        "rating": 4
+    },
+    {
+        "author_email": "charles.morris@reqres.in",
+        "reviewed_email": "tracey.ramos@reqres.in",
+        "date": "2019-03-01",
+        "comments": "She was very nice dropping us by the airport",
+        "rating": 5
+    },
+    {
+        "author_email": "janet.weaver@reqres.in",
+        "reviewed_email": "tracey.ramos@reqres.in",
+        "date": "2019-02-01",
+        "comments": "Very charismatic and friendly",
+        "rating": 4
+    },
+    {
+        "author_email": "janet.weaver@reqres.in",
+        "reviewed_email": "eve.holt@reqres.in",
+        "date": "2019-04-01",
+        "comments": "Awesome",
+        "rating": 5
+    }
+
+]
