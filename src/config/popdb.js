@@ -1,11 +1,11 @@
 const User = require("../models/User");
 const Ride = require("../models/Ride");
-const dotenv = require("dotenv");
+//const dotenv = require("dotenv");
 const Review = require("../models/Review");
 // const Chat = require("../../models/Chat");
 
 // Use .ENV config files
-dotenv.config();
+//dotenv.config();
 
 var mongoose = require( 'mongoose' )
     , _ = require( 'lodash' )
